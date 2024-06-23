@@ -76,6 +76,11 @@
       <artifactId>r2dbc-postgresql</artifactId>
       <version>1.0.5.RELEASE</version>
     </dependency>
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>pgadba</artifactId>
+      <version>0.1.1-ALPHA</version>
+    </dependency>
   </dependencies>
 
   <dependencyManagement>
