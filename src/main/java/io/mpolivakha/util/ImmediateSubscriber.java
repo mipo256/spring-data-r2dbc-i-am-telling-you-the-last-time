@@ -7,7 +7,7 @@ public abstract class ImmediateSubscriber<T> implements Subscriber<T> {
 
   @Override
   public void onSubscribe(Subscription subscription) {
-    subscription.request(100);
+    subscription.request(Integer.MAX_VALUE);
   }
 
 
