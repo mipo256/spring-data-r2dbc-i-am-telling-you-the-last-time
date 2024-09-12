@@ -15,7 +15,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.BaseSubscriber;
 import reactor.core.scheduler.Schedulers;
 
-public class R2DBCodeSample {
+public class ReactiveAgreementService {
 
   private final WebClient webClient;
 
@@ -23,7 +23,7 @@ public class R2DBCodeSample {
 
   private final ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
-  public R2DBCodeSample(String baseUrl, AgreementRepository agreementRepository) {
+  public ReactiveAgreementService(String baseUrl, AgreementRepository agreementRepository) {
     this.webClient = WebClient.builder().baseUrl(baseUrl).build();
     this.agreementRepository = agreementRepository;
   }

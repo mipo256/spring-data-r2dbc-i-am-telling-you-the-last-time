@@ -1,7 +1,5 @@
-package io.mpolivakha;
+package io.mpolivakha.r2dbc.web_client_example;
 
-import io.mpolivakha.r2dbc.web_client_example.AgreementRepository;
-import io.mpolivakha.r2dbc.web_client_example.R2DBCodeSample;
 import java.io.IOException;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
@@ -14,7 +12,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 
 @ExtendWith(MockitoExtension.class)
-class R2DBCodeSampleTest {
+class ReactiveAgreementServiceTest {
 
   @Mock
   private AgreementRepository agreementRepository;
@@ -35,7 +33,7 @@ class R2DBCodeSampleTest {
                           }
             """.trim()));
 
-    new R2DBCodeSample("http://localhost:" + mockWebServer.getPort(), agreementRepository).findAgreement("123", null);
+    new ReactiveAgreementService("http://localhost:" + mockWebServer.getPort(), agreementRepository).findAgreement("123", null);
 
     Mockito
         .verify(agreementRepository, Mockito.timeout(50000).times(1))

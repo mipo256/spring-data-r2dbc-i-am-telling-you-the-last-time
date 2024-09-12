@@ -1,5 +1,8 @@
-package io.mpolivakha;
+package io.mpolivakha.jdbc;
 
+import io.mpolivakha.AbstractPostgreSQLIntegrationTest;
+import io.mpolivakha.MyEntity;
+import io.mpolivakha.jdbc.PlainOldConnection;
 import java.time.Duration;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;

@@ -1,5 +1,6 @@
-package io.mpolivakha;
+package io.mpolivakha.jdbc;
 
+import io.mpolivakha.MyEntity;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
