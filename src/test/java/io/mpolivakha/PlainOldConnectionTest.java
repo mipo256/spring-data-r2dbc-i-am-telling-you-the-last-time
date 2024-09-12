@@ -7,7 +7,7 @@ import org.assertj.core.api.Assertions;
 import org.assertj.core.api.ObjectAssert;
 import org.junit.jupiter.api.Test;
 
-class PlainOldConnectionTest extends AbstractIntegrationTest {
+class PlainOldConnectionTest extends AbstractPostgreSQLIntegrationTest {
 
   @Test
   void findById() {

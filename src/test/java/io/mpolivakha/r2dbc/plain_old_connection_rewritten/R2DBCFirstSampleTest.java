@@ -1,11 +1,11 @@
 package io.mpolivakha.r2dbc.plain_old_connection_rewritten;
 
-import io.mpolivakha.AbstractIntegrationTest;
+import io.mpolivakha.AbstractPostgreSQLIntegrationTest;
 import java.time.Duration;
 import org.junit.jupiter.api.Test;
 import org.testcontainers.shaded.org.awaitility.Awaitility;
 
-class R2DBCFirstSampleTest extends AbstractIntegrationTest {
+class R2DBCFirstSampleTest extends AbstractPostgreSQLIntegrationTest {
 
   @Test
   void findMyAllEntities() {

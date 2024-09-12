@@ -2,10 +2,10 @@ package io.mpolivakha.adba;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import io.mpolivakha.AbstractIntegrationTest;
+import io.mpolivakha.AbstractPostgreSQLIntegrationTest;
 import org.junit.jupiter.api.Test;
 
-class AdbaExampleTest extends AbstractIntegrationTest {
+class AdbaExampleTest extends AbstractPostgreSQLIntegrationTest {
 
   @Test
   void findMyAllEntities() {

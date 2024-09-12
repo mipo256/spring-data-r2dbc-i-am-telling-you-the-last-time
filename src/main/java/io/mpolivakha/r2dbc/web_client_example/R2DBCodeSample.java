@@ -2,19 +2,17 @@ package io.mpolivakha.r2dbc.web_client_example;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import io.mpolivakha.util.ImmediateSubscriber;
 import java.nio.charset.StandardCharsets;
 import java.time.OffsetDateTime;
 import java.util.Base64;
 import java.util.Optional;
 import lombok.SneakyThrows;
-import org.reactivestreams.Subscriber;
-import org.reactivestreams.Subscription;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.lang.NonNull;
 import org.springframework.util.Assert;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.BaseSubscriber;
 import reactor.core.scheduler.Schedulers;
 
 public class R2DBCodeSample {
@@ -45,10 +43,10 @@ public class R2DBCodeSample {
         .retrieve()
         .bodyToMono(String.class)
         .subscribeOn(Schedulers.immediate())
-        .subscribe(new ImmediateSubscriber<>() {
+        .subscribe(new BaseSubscriber<>() {
           @SneakyThrows
           @Override
-          public void onNext(String body) {
+          public void hookOnNext(String body) {
             AgreementResponse agreementResponse = objectMapper.readValue(body, AgreementResponse.class);
             if (agreementResponse.getExpiresAt().isAfter(OffsetDateTime.now())) {
               agreementRepository.renewAgreement(agreementResponse);

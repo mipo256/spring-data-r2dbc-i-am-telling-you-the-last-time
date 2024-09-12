@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.utility.DockerImageName;
 
-public class AbstractIntegrationTest {
+public class AbstractPostgreSQLIntegrationTest {
 
   protected final static PostgreSQLContainer<?> container = new PostgreSQLContainer<>(DockerImageName.parse("postgres:15.2"));
 
