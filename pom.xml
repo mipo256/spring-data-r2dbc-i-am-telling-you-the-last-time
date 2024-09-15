@@ -64,8 +64,6 @@
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.18.32</version>
-      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
@@ -78,12 +76,15 @@
     <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>r2dbc-postgresql</artifactId>
-      <version>1.0.5.RELEASE</version>
     </dependency>
     <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>pgadba</artifactId>
       <version>0.1.1-ALPHA</version>
+    </dependency>
+    <dependency>
+      <groupId>io.projectreactor</groupId>
+      <artifactId>reactor-test</artifactId>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -116,6 +117,14 @@
         <configuration>
           <target>17</target>
           <source>17</source>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.2.5</version>
+        <configuration>
+          <argLine>-Djava.net.preferIPv4Stack</argLine>
         </configuration>
       </plugin>
     </plugins>

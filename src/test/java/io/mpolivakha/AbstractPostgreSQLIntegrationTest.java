@@ -14,9 +14,4 @@ public class AbstractPostgreSQLIntegrationTest {
     container.withInitScript("init.sql");
     container.start();
   }
-
-  @AfterAll
-  static void afterAll() {
-    container.stop();
-  }
 }
