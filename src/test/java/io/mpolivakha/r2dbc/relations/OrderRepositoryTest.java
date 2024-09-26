@@ -2,11 +2,13 @@ package io.mpolivakha.r2dbc.relations;
 
 import io.mpolivakha.AbstractPostgreSQLIntegrationTest;
 import io.mpolivakha.r2dbc.relations.OrderRepositoryTest.CurrentConfiguration;
+import io.r2dbc.proxy.ProxyConnectionFactory;
+import io.r2dbc.proxy.support.QueryExecutionInfoFormatter;
 import io.r2dbc.spi.ConnectionFactories;
 import io.r2dbc.spi.ConnectionFactory;
 import io.r2dbc.spi.ConnectionFactoryOptions;
 import java.util.List;
-import org.junit.jupiter.api.AfterEach;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -26,6 +28,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
+@Slf4j
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = CurrentConfiguration.class)
 class OrderRepositoryTest extends AbstractPostgreSQLIntegrationTest {
@@ -62,7 +65,7 @@ class OrderRepositoryTest extends AbstractPostgreSQLIntegrationTest {
         @Value("${spring.r2dbc.url}") String r2dbcUrl,
         @Value("${spring.r2dbc.username}") String username,
         @Value("${spring.r2dbc.password}") String password
-        ) {
+    ) {
       ConnectionFactoryOptions build = ConnectionFactoryOptions
           .builder()
           .from(ConnectionFactoryOptions.parse(r2dbcUrl))
@@ -70,7 +73,12 @@ class OrderRepositoryTest extends AbstractPostgreSQLIntegrationTest {
           .option(ConnectionFactoryOptions.PASSWORD, password)
           .build();
 
-      return ConnectionFactories.get(build);
+      return ProxyConnectionFactory
+          .builder(ConnectionFactories.get(build))
+          .onAfterQuery(methodExecutionInfo -> {
+            log.info(QueryExecutionInfoFormatter.showAll().format(methodExecutionInfo));
+          })
+          .build();
     }
   }
 

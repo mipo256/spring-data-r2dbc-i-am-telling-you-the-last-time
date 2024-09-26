@@ -78,6 +78,11 @@
       <artifactId>r2dbc-postgresql</artifactId>
     </dependency>
     <dependency>
+      <groupId>io.r2dbc</groupId>
+      <artifactId>r2dbc-proxy</artifactId>
+      <version>1.1.5.RELEASE</version>
+    </dependency>
+    <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>pgadba</artifactId>
       <version>0.1.1-ALPHA</version>
